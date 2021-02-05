@@ -1,0 +1,27 @@
+name: OhTheWorld
+version: 1.0.0
+author: Shadow
+main: cn.shadow.OhTheWorld.Main
+api-version: 1.13
+api: Bukkit
+database: false
+softdepend: [PlaceholderAPI, ProtocolLib, Vault]
+commands:
+   otw:
+      description: Open main menu of OhTheWorld
+      usage: /<command>
+      permission: ohtheworld.manage
+   wtp:
+      description: Open world teleport GUI
+      usage: /<command>
+      permission: ohtheworld.teleport
+permissions:
+  ohtheworld.manage:
+    default: op
+    description: open the world manage GUI
+  ohtheworld.teleport:
+    default: true
+    description: open the world teleport GUI
+  ohtheworld.world.*:
+    default: true
+    description: Permission to teleport to other worlds
