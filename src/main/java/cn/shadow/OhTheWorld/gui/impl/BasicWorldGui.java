@@ -112,6 +112,7 @@ public abstract class BasicWorldGui implements GuiProvider {
 		.setSeed(seed[0])
 		.setRegenOnEveryXHours(regen)
 		.setEnterFee(fee)
+		.setEnvironment(env)
 		.setWorldIcon(worldIcon[0])
 		.setDifficulty(difficulty)
 		.setgetGenerateStructures(generateStructures[0])

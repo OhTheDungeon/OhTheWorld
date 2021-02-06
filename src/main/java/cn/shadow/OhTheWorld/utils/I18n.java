@@ -109,6 +109,12 @@ public class I18n {
 	public String NoPermission = "无对应权限";
 	public String BeforeCreatingWorld = "开始创建世界，将会有些许卡顿";
 	
+	public String InputBoxHints[] = {
+			"点击左侧恢复默认内容",
+			"点击右侧应用更改",
+			"esc键退回上一界面"
+	};
+	
 	public String LoreWorldEnv = "世界环境 : %s";
 	public String LoreWorldDimId = "维度id : %s";
 	public String LoreWorldAlias = "世界别名 : %s";

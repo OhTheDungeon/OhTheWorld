@@ -3,8 +3,10 @@ package cn.shadow.OhTheWorld.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import cn.shadow.OhTheWorld.Main;
 import cn.shadow.OhTheWorld.gui.impl.BasicWorldGui;
@@ -57,6 +59,19 @@ public class GuiMacro {
 		gui.addElement(element);
 	}
 	
+	private static ItemStack getInputBoxItem() {
+		ItemStack is = new ItemStack(MultiVersion.getInstance().getDiamondSword());
+		List<String> lores = new ArrayList<>();
+		for(String str : I18n.getInstance().InputBoxHints) {
+			lores.add(str);
+		}
+		ItemMeta im = is.getItemMeta();
+		im.setLore(lores);
+		is.setItemMeta(im);
+		
+		return is;
+	}
+	
 	public static void InputBox(char placeholder, String[] langs, String[] ref, 
 			BasicWorldGui guiholder, InventoryGui gui) {
 		String[] lores = new String[langs.length];
@@ -77,7 +92,13 @@ public class GuiMacro {
 		    	
 		    	new AnvilGUI.Builder()
 		        .onClose(cp -> {
-		        	guiholder.openInv(cp);
+		        	cp.closeInventory();
+		        	Bukkit.getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
+		        		@Override
+		        		public void run() {
+		        			guiholder.openInv(cp);
+		        		}
+		        	}, 1L);
 		        })
 		        .onComplete((cp, text) -> {
 		            if(!text.isEmpty()) {
@@ -88,7 +109,7 @@ public class GuiMacro {
 		            }
 		        })
 		        .text(ref[0])
-		        .itemLeft(new ItemStack(MultiVersion.getInstance().getDiamondSword()))
+		        .itemLeft(getInputBoxItem())
 		        .title(lores[0])
 		        .plugin(Main.getInstance())
 		        .open(player);
