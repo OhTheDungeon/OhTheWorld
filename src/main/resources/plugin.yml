@@ -1,5 +1,5 @@
 name: OhTheWorld
-version: 1.0.0
+version: 1.1.0
 author: Shadow
 main: cn.shadow.OhTheWorld.Main
 api-version: 1.13
@@ -9,6 +9,10 @@ softdepend: [PlaceholderAPI, ProtocolLib, Vault]
 commands:
    otw:
       description: Open main menu of OhTheWorld
+      usage: /<command>
+      permission: ohtheworld.manage
+   otwg:
+      description: Custom Generator text
       usage: /<command>
       permission: ohtheworld.manage
    wtp:
